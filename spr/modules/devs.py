@@ -43,7 +43,7 @@ async def edit_or_reply(msg: Message, **kwargs):
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
 
-@spr.on_message(
+@spr.on_edited_message(
     filters.user(SUDOERS)
     & ~filters.forwarded
     & ~filters.via_bot
@@ -126,7 +126,7 @@ async def runtime_func_cq(_, cq):
     await cq.answer(runtime, show_alert=True)
 
 
-@spr.on_message(
+@spr.on_edited_message(
     filters.user(SUDOERS)
     & ~filters.forwarded
     & ~filters.via_bot
